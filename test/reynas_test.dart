@@ -15,6 +15,6 @@ Future main() async{
 
 
       //Then
-      expect(reynas.iniciaRecorridoTest(), solutions[boardSize-inicialCondition+100]);
+      expect(reynas.iniciaRecorridoTest(), solutions[boardSize-inicialCondition]);
     });
 }

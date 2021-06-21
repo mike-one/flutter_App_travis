@@ -1,6 +1,13 @@
 language: dart
 dart:
   - stable
+
+before_script:
+  - git clone https://github.com/flutter/flutter.git
+  - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
+  - flutter doctor
+  - pub global activate flutter_plugin_tools
 script:
+  - ./script/incremental_build.sh analyze
   - pub get --packages-dir
   - pub run test
