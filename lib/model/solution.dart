@@ -24,6 +24,10 @@ class Solution{
 
   /**
    * Map que se regresa
+   *
+   * Se acomoda de tal forma que se puedan almacenar en una base de datos
+   * y con tablas distintas entre soluciones. Así evitamos el desperdicio de memoria
+   * Aunque terminamos con DB no relacionales
    */
 
   Map<String,dynamic> toMap(){

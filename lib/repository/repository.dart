@@ -8,10 +8,15 @@ import 'package:flutter_app/repository/persistence.dart';
  */
 class Repository extends Persistence{
 
-
+  /**
+   * Instancia de la base de datos
+   */
   TaskDatabase database = TaskDatabase();
 
-  String nameDataBase = "base_prueba14.db";
+  /**
+   * Nombre de la base de datos
+   */
+  String nameDataBase = "base_prueba30.db";
 
   Repository(int sizeBoard, List<Uint8List> memory) : super(sizeBoard, memory);
 
@@ -32,7 +37,10 @@ class Repository extends Persistence{
    * Función que devuelve las soluciones almacenadas en la base de datos
    */
   Future<List<Uint8List>> getSolutions() async {
-   memory =  await database.solutionsDB(sizeBoard);
+    await database.createDataBase(nameDataBase);
+    database.initPath(sizeBoard);
+    await database.createTable(sizeBoard);
+    memory =  await database.solutionsDB(sizeBoard);
     return memory;
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+import 'results_page.dart';
 
 class NavigationBar extends StatefulWidget{
 
@@ -16,8 +17,8 @@ class _NavigationBar extends State <NavigationBar>{
   int indexTap = 0;
 
   final List<Widget> widgetsChildren =  [
-    MyHomePage(title: 'Flutter Demo Home Page'),
-    MyHomePage(title: 'Flutter Demo Home Page')
+    MyHomePage(title: 'Problema de las n Reynas'),
+    ResultsPage(title: 'Flutter Demo Home Page'),
   ];
 
   void onTapTapped(int index){
@@ -41,11 +42,11 @@ class _NavigationBar extends State <NavigationBar>{
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-              title: Text("Home")
+              title: Text("Cálcular")
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text("Home")
+                icon: Icon(Icons.slideshow),
+                title: Text("Resultados")
             )
 
           ],

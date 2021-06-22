@@ -11,8 +11,14 @@ abstract class Persistence{
 
   Persistence(this.sizeBoard, this.memory);
 
+  /**
+   * Funciín para almacecnar en el storage
+   */
   Future<void> save();
 
+  /**
+   * Funciín para llamar las soluciones del storage
+   */
   Future<List<Uint8List>> getSolutions();
 
 }

@@ -33,7 +33,6 @@ class Reynas {
    * Función para iniciar la busqueda de distribucón de reynas
    */
   Future<int> iniciaRecorrido() async {
-
     //Se inicia en la columna 0
     _recorrido(0);
 
@@ -50,6 +49,8 @@ class Reynas {
 
   /**
    * Función para iniciar la busqueda de distribucón de reynas
+   *
+   * Este método es exclusivo para testear y ver cuánto se tarda en encontrar las soluciones
    */
   int iniciaRecorridoTest() {
     //Medimos el tiempo de ejecución
@@ -77,7 +78,8 @@ class Reynas {
       //Iprime o guarda el valor de la solución
       _saveSolution();
       return;
-    } else
+    }
+    else
       for (int row = 0; row < _sizeBoard; row++) {
         if (_validateQueen(column, row)) {
           //Se guarda la nueva reyna
@@ -101,10 +103,10 @@ class Reynas {
     for (int columnAux = 0; columnAux < column; columnAux++) {
       if (_board[columnAux] == row ||
           (column - columnAux) == (row - _board[columnAux]).abs())
-        //Regresa un false si la reyna
+        //Regresa un false si la reyna no cumple con las reglas de no atacar a otra
         return false;
     }
-    return true;
+    return true; //Regresa un true cuando no se atacan
   }
 
   /**
@@ -113,6 +115,6 @@ class Reynas {
   void _saveSolution() {
     _solutions++; //Contador de soluciones
     _memory.add(Uint8List.fromList(_board)); //Se guarda en memoria ram
-    print(_board);
+//    print(_board);  //Se puede imprimir solución por solución, pero alenta el proceso de la busqueda
   }
 }

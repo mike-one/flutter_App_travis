@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../widgets/button_floating.dart';
+import '../widgets/pair_buttons.dart';
 import '../../bloc/reynas.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -80,20 +81,18 @@ class _MyHomePageState extends State<MyHomePage> {
     _calculateQueens = Reynas(_queens);
     _progress = true;
 
+    //Se manda a llamar el progress
     setState(() {
       _progress = true;
     });
 
     _solutions = await _calculateQueens!.iniciaRecorrido();
 
+    //Se termina la llamada del progress
     setState(() {
       _progress = false;
     });
 
-    /*
-      if ((_solutions = _calculateQueens!.iniciaRecorrido()) > 0.0)
-        _screen = _MyHomePageState() as Widget?;
-      */
   }
 
   /**
@@ -119,7 +118,10 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(_giveMeNumQueensTitle),
             _textSizeQueens(),
-            _rowsButtons(),
+            new PairButtons(functionLeft: _decreaseCounter,
+                functionRight: _incrementCounter,
+                iconLeft: Icon(Icons.remove),
+                iconRight: Icon(Icons.add)),
             Text(_calculateQueensTitle),
             _buttonCalculate(),
             Text("Número de soluciones:"),
